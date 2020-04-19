@@ -38,8 +38,10 @@ const CodeNames = props => {
 
     return (
     <>
+    <div id="divButton">
     <Button type="button" id = 'button'  onClick = {() => getWords()}>New Words</Button>
     <Button type="button" id = 'button'  onClick = {() => copyWords(document.getElementById('word-list').innerText)}>Copy Words</Button>
+    </div>
     <div></div>
     <div id='words'>
         <p id='word-list'>{words}</p>
