@@ -28,21 +28,20 @@ const CodeNames = props => {
         
     }
 
-        function copyWords(words) {
+    function copyWords(words) {
         navigator.clipboard.writeText(words).then( () => {
             alert('IT IS COPIED')
         }, function() {
             alert("IT HAS FAILED")
         });
-        }
+    }
 
     return (
     <>
     <div id="divButton">
-    <Button type="button" id = 'button'  onClick = {() => getWords()}>New Words</Button>
-    <Button type="button" id = 'button'  onClick = {() => copyWords(document.getElementById('word-list').innerText)}>Copy Words</Button>
+        <Button type="button" id = 'button'  onClick = {() => getWords()}>New Words</Button>
+        <Button type="button" id = 'button'  onClick = {() => copyWords(document.getElementById('word-list').innerText)}>Copy Words</Button>
     </div>
-    <div></div>
     <div id='words'>
         <p id='word-list'>{words}</p>
     </div>
