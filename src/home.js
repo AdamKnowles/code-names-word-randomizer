@@ -2,21 +2,21 @@ import React, { useState, useEffect, useRef } from "react"
 import { Button, Alert} from 'reactstrap'
 import list from './fullList'
 
-
-
 const CodeNames = props => {
 
-    
+    let randomNumbers =  new Set()
     let finalList = []
-    let randomNumbers = []
     const [words, setWords] = useState()
     
     function getWords() {
+        
         for(let i = 0; i < 400; i++){
-            randomNumbers.push(Math.floor(Math.random() * list.length))
+            randomNumbers.add(Math.floor(Math.random() * list.length))
         }
-
-        randomNumbers.forEach(random => {
+        
+        let randomNumbersArray = [...randomNumbers]
+        
+        randomNumbersArray.forEach(random => {
             list.forEach((word, index) => {
                 if (random === index) {
                     finalList.push(word)
@@ -25,7 +25,6 @@ const CodeNames = props => {
         })
         setWords(finalList.join(', '))
         finalList = []
-        
     }
 
     function copyWords(words) {
@@ -36,13 +35,14 @@ const CodeNames = props => {
         });
     }
 
+
     return (
     <>
     <div id="divButton">
         <Button type="button" id = 'button'  onClick = {() => getWords()}>New Words</Button>
         <Button type="button" id = 'button'  onClick = {() => copyWords(document.getElementById('word-list').innerText)}>Copy Words</Button>
     </div>
-    <div id='words'>
+    <div id='words-div'>
         <p id='word-list'>{words}</p>
     </div>
     </>
